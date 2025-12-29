@@ -1,1 +1,23 @@
 
+Lab 2B: CloudFront + API caching correctness
+Project Summary
+You will configure CloudFront behaviors so that:
+    Static content is cached aggressively (fast + cheap)
+    API responses are cached only when safe, or not cached at all
+    The cache key includes the minimum needed values (to avoid cache fragmentation), 
+      but includes all required values (to avoid serving the wrong response)
+    You can prove correctness using response headers like Age and CloudFront cache indicators, plus application-level evidence
+
+Why it matters to the workforce
+This lab is a direct mirror of production:
+  Most outages around CDNs aren’t “CloudFront is down.”
+  They are misconfigured caching:
+    auth/session mixups (catastrophic)
+    stale reads after writes
+    “works in dev, breaks in prod” because headers/cookies/query strings weren’t forwarded
+
+Modern orgs expect engineers to understand:
+    cache key composition 
+    how cache + origin request policies interact 
+    cache-control semantics (prefer Cache-Control over Expires)
+
